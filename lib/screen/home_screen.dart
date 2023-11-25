@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wetherapp/screen/test_screen.dart';
 
-import '../services/news_services.dart';
 import '../widget/category_list_view.dart';
-import '../widget/news_liste_view.dart';
+import '../widget/news_list_view_builder.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         title: Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: const [
             Text(
               "News ",
               style: TextStyle(color: Colors.black),
@@ -24,7 +24,10 @@ class HomeScreen extends StatelessWidget {
             Text(
               "Cloud",
               style: TextStyle(color: Colors.orange),
-            )
+            ),
+            SizedBox(
+              width: 30,
+            ),
           ],
         ),
       ),
@@ -36,12 +39,12 @@ class HomeScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: CategoryListView(),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 32,
               ),
             ),
-            NewsListeView(),
+            NewsListViewBuilder(category: 'general'),
           ],
         ),
       ),

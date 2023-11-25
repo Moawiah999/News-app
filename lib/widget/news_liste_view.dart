@@ -1,43 +1,23 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:wetherapp/models/articles_model.dart';
 
-import '../services/news_services.dart';
 import 'news_tile.dart';
 
-class NewsListeView extends StatefulWidget {
-  const NewsListeView({
-    super.key,
-  });
+class NewsListeView extends StatelessWidget {
+  final List<ArticlesModel> articles;
 
-  @override
-  State<NewsListeView> createState() => _NewsListeViewState();
-}
-
-class _NewsListeViewState extends State<NewsListeView> {
-  List<ArticlesModel> articles = [];
-  @override
-  void initState() {
-    super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsServices(Dio()).getNews();
-
-    setState(() {});
-  }
+  NewsListeView({super.key, required this.articles});
 
   @override
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
+        childCount: articles.length,
         (context, index) {
           return NewsTile(
             articlesModel: articles[index],
           );
         },
-        childCount: articles.length,
       ),
     );
   }

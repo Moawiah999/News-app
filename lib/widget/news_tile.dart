@@ -3,8 +3,8 @@ import 'package:wetherapp/models/articles_model.dart';
 
 // cached network image
 class NewsTile extends StatelessWidget {
- const NewsTile({super.key, required this.articlesModel});
-final  ArticlesModel articlesModel;
+  const NewsTile({super.key, required this.articlesModel});
+  final ArticlesModel articlesModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +13,7 @@ final  ArticlesModel articlesModel;
         ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: Image.network(
-              articlesModel.image ?? "No image",
+              articlesModel.image ?? "https://images.pexels.com/photos/18046342/pexels-photo-18046342/free-photo-of-snow-covering-mountain-side-in-desert.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -22,7 +22,7 @@ final  ArticlesModel articlesModel;
           height: 12,
         ),
         Text(
-         articlesModel.title,
+          articlesModel.title,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
